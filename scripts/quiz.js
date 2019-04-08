@@ -24,7 +24,27 @@ class Question {
 }
 
 class TriviaApi {
+    static attrs {
+        BASE_URL : "https://opentdb.com/api.php?amount=10",
+        error: '',
+    }
 
+    static apiFetch {
+        fetch(this.attrs.BASE_URL)
+        .then(
+            if(!res.ok){
+                this.attrs.error = {code: res.status}
+                return res.json();
+            })
+        .then(data => {
+            if(this.attrs.error){
+                this.attrs.error.message = data.message
+                return Promise.reject(`ERROR: ${this.attrs.error}`);
+            }
+
+            return data
+        })
+    }
 }
 
 class Quiz {
