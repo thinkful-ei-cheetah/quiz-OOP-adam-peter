@@ -28,7 +28,6 @@ const api = (function(){
             return apiFetch(`${BASE_URL}`);
     }
 
-
     return {
         getQuestions,
     };
