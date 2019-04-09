@@ -24,9 +24,9 @@ class Question {
 }
 
 class TriviaApi {
-    static attrs {
+    static attrs = {
         BASE_URL : "https://opentdb.com/api.php?amount=10",
-        error: '',
+        error : '',
     }
 
     static apiFetch {
