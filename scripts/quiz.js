@@ -1,6 +1,15 @@
 'use strict';
 
 class Question {
+    // constructor(){
+    //     this.text = '';
+    //     this.answers = [];
+    //     this.correctAnswer = '';
+    //     this.userAnswer = '';
+    //     }
+    // }
+
+
     static attrs = {
         text: '',
         answers: [],
