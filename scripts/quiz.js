@@ -1,15 +1,6 @@
 'use strict';
 
 class Question {
-    // constructor(){
-    //     this.text = '';
-    //     this.answers = [];
-    //     this.correctAnswer = '';
-    //     this.userAnswer = '';
-    //     }
-    // }
-
-
     static attrs = {
         text: '',
         answers: [],
@@ -50,7 +41,6 @@ class TriviaApi {
                 this.attrs.error.message = data.message
                 return Promise.reject(`ERROR: ${this.attrs.error}`);
             }
-
             return data
         })
     }
@@ -71,7 +61,7 @@ class Quiz {
         this.attrs.scoreHistory.push(score);
     }
 
-    static questionAttempt(score){
+    static questionAttempt(){
         const currentQuestion = this.attrs.unasked[this.attrs.unasked.length -1];
         this.attrs.asked.push(currentQuestion);
         this.attrs.unasked.pop();
