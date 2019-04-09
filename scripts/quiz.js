@@ -24,26 +24,31 @@ class Question {
 }
 
 class TriviaApi {
-    static attrs = {
-        BASE_URL : "https://opentdb.com/api.php?amount=10",
-        error : '',
+    constructor()  {
+        this.BASE_URL = 'https://opentdb.com/api.php?amount=5';
+        this.error = '';
     }
 
-    static apiFetch {
-        fetch(this.attrs.BASE_URL)
-        .then(
+    static apiFetch() {
+        fetch(this.BASE_URL)
+        .then( res => {
             if(!res.ok){
-                this.attrs.error = {code: res.status}
+                this.error = {code: res.status}
                 return res.json();
-            })
+            }
+        })
         .then(data => {
-            if(this.attrs.error){
-                this.attrs.error.message = data.message
-                return Promise.reject(`ERROR: ${this.attrs.error}`);
+            if(this.error){
+                this.error.message = data.message
+                return Promise.reject(`ERROR: ${this.error}`);
             }
             return data
         })
     }
+
+    static getQuestions() {
+        return this.apiFetch(`${this.BASE_URL}`);
+}
 }
 
 class Quiz {
